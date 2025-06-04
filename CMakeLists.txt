@@ -42,7 +42,7 @@ knowhere_option(WITH_LIGHT "Build with light weight version" OFF)
 
 # cardinal is an enterprise vector search engine and can only be enabled for
 # cloud environment
-knowhere_option(WITH_CARDINAL "Build with cardinal" OFF)
+knowhere_option(WITH_CARDINAL "Build with cardinal" ON)
 knowhere_option(CARDINAL_VERSION_FORCE_CHECKOUT
                 "Force checkout cardinal version" OFF)
 # this is needed for clang on ubuntu:20.04, otherwise the linked fails with
@@ -84,6 +84,8 @@ endif()
 
 include(cmake/utils/platform_check.cmake)
 include(cmake/utils/compile_flags.cmake)
+
+include(cmake/libs/libmilvus-common.cmake)
 include(cmake/libs/libfaiss.cmake)
 include(cmake/libs/libhnsw.cmake)
 

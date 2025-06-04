@@ -1,6 +1,6 @@
 # Use short SHA1 as version
-set(CARDINAL_VERSION v2.5.10)
-set(CARDINAL_REPO_URL "https://github.com/zilliztech/cardinal.git")
+set(CARDINAL_VERSION add_file_manager)
+set(CARDINAL_REPO_URL "https://github.com/foxspy/cardinal.git")
 
 set(CARDINAL_REPO_DIR "${CMAKE_CURRENT_SOURCE_DIR}/thirdparty/cardinal")
 
