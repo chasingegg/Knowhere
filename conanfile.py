@@ -46,6 +46,8 @@ class KnowhereConan(ConanFile):
         "with_cardinal": False,
         "with_profiler": False,
         "with_ut": False,
+        "folly:shared": True,
+        "gflags:shared": True,
         "glog:shared": True,
         "glog:with_gflags": True,
         "gtest:build_gmock": False,
@@ -53,8 +55,6 @@ class KnowhereConan(ConanFile):
         "with_benchmark": False,
         "with_coverage": False,
         "boost:without_locale": False,
-        "boost:without_test": True,
-        "boost:without_stacktrace": True,
         "fmt:header_only": True,
         "with_faiss_tests": False,
         "libcurl:with_ssl": False,
@@ -96,6 +96,7 @@ class KnowhereConan(ConanFile):
 
     def requirements(self):
         self.requires("boost/1.83.0")
+        self.requires("gflags/2.2.2")
         self.requires("glog/0.6.0")
         self.requires("nlohmann_json/3.11.2")
         self.requires("openssl/1.1.1t")
