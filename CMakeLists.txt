@@ -154,17 +154,17 @@ endif()
 
 set(KNOWHERE_LINKER_LIBS "")
 
-if(WITH_CARDINAL)
-  add_definitions(-DKNOWHERE_WITH_CARDINAL)
-  include(cmake/libs/libcardinal.cmake)
-endif()
-
 if(WITH_DISKANN)
   add_definitions(-DKNOWHERE_WITH_DISKANN)
   include(cmake/libs/libdiskann.cmake)
 else()
   knowhere_file_glob(GLOB_RECURSE KNOWHERE_DISKANN_SRCS src/index/diskann/*.cc)
   list(REMOVE_ITEM KNOWHERE_SRCS ${KNOWHERE_DISKANN_SRCS})
+endif()
+
+if(WITH_CARDINAL)
+  add_definitions(-DKNOWHERE_WITH_CARDINAL)
+  include(cmake/libs/libcardinal.cmake)
 endif()
 
 knowhere_file_glob(GLOB_RECURSE KNOWHERE_GPU_SRCS src/index/gpu/flat_gpu/*.cc
@@ -187,6 +187,7 @@ list(APPEND KNOWHERE_LINKER_LIBS nlohmann_json::nlohmann_json)
 list(APPEND KNOWHERE_LINKER_LIBS prometheus-cpp::core prometheus-cpp::push)
 list(APPEND KNOWHERE_LINKER_LIBS fmt::fmt-header-only)
 list(APPEND KNOWHERE_LINKER_LIBS Folly::folly)
+list(APPEND KNOWHERE_LINKER_LIBS milvus-common)
 if(NOT WITH_LIGHT)
   list(APPEND KNOWHERE_LINKER_LIBS opentelemetry-cpp::opentelemetry_trace)
   list(APPEND KNOWHERE_LINKER_LIBS
