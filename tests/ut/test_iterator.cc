@@ -638,7 +638,7 @@ TEST_CASE("Test Iterator BruteForce With Sparse Float Vector", "[IP metric]") {
 TEST_CASE("Test Scann with data view refiner", "[float metrics]") {
     using Catch::Approx;
     if (!faiss::support_pq_fast_scan) {
-        SKIP("pass scann test");
+        //SKIP("pass scann test");
     }
     auto version = GenTestVersionList();
 
