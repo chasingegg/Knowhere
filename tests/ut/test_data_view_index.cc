@@ -33,7 +33,7 @@ TEST_CASE("Test SCANN with data view refiner", "[float metrics]") {
     using Catch::Approx;
     auto version = GenTestVersionList();
     if (!faiss::support_pq_fast_scan) {
-        SKIP("pass scann test");
+        //SKIP("pass scann test");
     }
 
     const int64_t nb = 1000, nq = 10;
@@ -186,7 +186,7 @@ TEST_CASE("Ensure topk test", "[float metrics]") {
     using Catch::Approx;
     auto version = GenTestVersionList();
     if (!faiss::support_pq_fast_scan) {
-        SKIP("pass scann test");
+        //SKIP("pass scann test");
     }
 
     const int64_t nb = 10000, nq = 10;
@@ -304,7 +304,7 @@ BaseTest(const knowhere::DataSetPtr train_ds, const knowhere::DataSetPtr query_d
 
 TEST_CASE("Test difference dim with difference data type", "[multi metrics]") {
     if (!faiss::support_pq_fast_scan) {
-        SKIP("pass scann test");
+        //SKIP("pass scann test");
     }
     const int64_t nb = 1000, nq = 10;
     auto metric = GENERATE(as<std::string>{}, knowhere::metric::COSINE, knowhere::metric::IP, knowhere::metric::L2);
@@ -341,7 +341,7 @@ TEST_CASE("Test difference dim with difference data type", "[multi metrics]") {
 
 TEST_CASE("Test fp16/bf16 with quant refine", "[multi metrics]") {
     if (!faiss::support_pq_fast_scan) {
-        SKIP("pass scann test");
+        //SKIP("pass scann test");
     }
     const int64_t nb = 1000, nq = 1;
     auto metric = GENERATE(as<std::string>{}, knowhere::metric::COSINE, knowhere::metric::IP, knowhere::metric::L2);
