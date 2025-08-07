@@ -189,8 +189,8 @@ if(NOT WITH_LIGHT)
   list(APPEND KNOWHERE_LINKER_LIBS opentelemetry-cpp::opentelemetry_trace)
   list(APPEND KNOWHERE_LINKER_LIBS
        opentelemetry-cpp::opentelemetry_exporter_ostream_span)
-  list(APPEND KNOWHERE_LINKER_LIBS
-       opentelemetry-cpp::opentelemetry_exporter_jaeger_trace)
+  # list(APPEND KNOWHERE_LINKER_LIBS
+  #      opentelemetry-cpp::opentelemetry_exporter_jaeger_trace)
   list(APPEND KNOWHERE_LINKER_LIBS
        opentelemetry-cpp::opentelemetry_exporter_otlp_grpc)
   list(APPEND KNOWHERE_LINKER_LIBS
