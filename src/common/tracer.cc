@@ -50,12 +50,12 @@ initTelemetry(const TraceConfig& cfg) {
     std::unique_ptr<opentelemetry::sdk::trace::SpanExporter> exporter;
     if (cfg.exporter == "stdout") {
         exporter = ostream::OStreamSpanExporterFactory::Create();
-    // } else if (cfg.exporter == "jaeger") {
-    //     auto opts = jaeger::JaegerExporterOptions{};
-    //     opts.transport_format = jaeger::TransportFormat::kThriftHttp;
-    //     opts.endpoint = cfg.jaegerURL;
-    //     exporter = jaeger::JaegerExporterFactory::Create(opts);
-    //     LOG_KNOWHERE_INFO_ << "init jaeger exporter, endpoint: " << opts.endpoint;
+    } else if (cfg.exporter == "jaeger") {
+        auto opts = jaeger::JaegerExporterOptions{};
+        opts.transport_format = jaeger::TransportFormat::kThriftHttp;
+        opts.endpoint = cfg.jaegerURL;
+        exporter = jaeger::JaegerExporterFactory::Create(opts);
+        LOG_KNOWHERE_INFO_ << "init jaeger exporter, endpoint: " << opts.endpoint;
         // } else if (cfg.exporter == "otlp") {
         //     auto opts = otlp::OtlpGrpcExporterOptions{};
         //     opts.endpoint = cfg.otlpEndpoint;
