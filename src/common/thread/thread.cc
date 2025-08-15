@@ -17,7 +17,7 @@
 #include <memory>
 #include <thread>
 #include <utility>
-
+#include <chrono>
 #include "folly/executors/CPUThreadPoolExecutor.h"
 #include "knowhere/comp/thread_pool.h"
 
@@ -26,6 +26,7 @@ namespace knowhere {
 void
 ExecOverSearchThreadPool(std::vector<std::function<void()>>& tasks) {
     auto pool = ThreadPool::GetGlobalSearchThreadPool();
+    auto end_time1 = std::chrono::high_resolution_clock::now();
     std::vector<folly::Future<folly::Unit>> futures;
     futures.reserve(tasks.size());
     for (auto&& t : tasks) {
@@ -36,6 +37,9 @@ ExecOverSearchThreadPool(std::vector<std::function<void()>>& tasks) {
     }
     std::this_thread::yield();
     WaitAllSuccess(futures);
+    auto end_time2 = std::chrono::high_resolution_clock::now();
+    auto duration1 = std::chrono::duration_cast<std::chrono::microseconds>(end_time2 - end_time1);
+    LOG_KNOWHERE_INFO_ << "FUCK request " << " " << duration1.count() / 1000.0 << "ms";
 }
 
 void
